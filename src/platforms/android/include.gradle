@@ -1,0 +1,12 @@
+dependencies {
+	implementation 'com.github.bradmartin:XSensor:0.1.0-rc2'
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        maven { 
+          url 'https://jitpack.io' 
+        }
+    }
+}
