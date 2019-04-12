@@ -1,9 +1,9 @@
 {
   "name": "nativescript-android-sensors",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "NativeScript plugin to use Android device sensors. The sensors are run on a background thread.",
   "main": "index",
-  "typings": "index.d.ts",
+  "typings": "index.android.d.ts",
   "nativescript": {
     "platforms": {
       "android": "5.2.0"
