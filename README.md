@@ -1,4 +1,19 @@
-# NativeScript-Android-Sensors
+<a align="center" href="https://www.npmjs.com/package/nativescript-android-sensors">
+    <h3 align="center">NativeScript-Android-Sensors</h3>
+</a>
+<h4 align="center">NativeScript plugin for using android device sensors that run on a background thread.</h4>
+
+<p align="center">
+ <a href="https://www.npmjs.com/package/nativescript-android-sensors">
+        <img src="https://img.shields.io/npm/v/nativescript-android-sensors.svg" alt="npm">
+    </a>
+     <a href="https://travis-ci.org/bradmartin/nativescript-android-sensors">
+        <img src="https://travis-ci.org/bradmartin/nativescript-android-sensors.svg?branch=master" alt="travis build">
+    </a>
+    <a href="https://github.com/bradmartin/nativescript-android-sensors/stargazers">
+        <img src="https://img.shields.io/github/stars/bradmartin/nativescript-android-sensors.svg" alt="stars">
+    </a>
+</p>
 
 ## Installation
 
