@@ -1,5 +1,5 @@
 dependencies {
-	implementation 'com.github.bradmartin:XSensor:0.1.0'
+	implementation 'com.github.bradmartin:XSensor:0.2.0'
 }
 
 allprojects {
