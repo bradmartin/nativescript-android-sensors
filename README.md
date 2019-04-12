@@ -50,13 +50,20 @@ functionToStopTheSensorData() {
 #### Constructor
 
 ```typescript
-import { AndroidSensors } from 'nativescript-android-sensors';
+import {
+  AndroidSensors,
+  AndroidSensorListener,
+  SensorDelay
+} from 'nativescript-android-sensors';
 
 const sensors = new AndroidSensors();
 ```
 
 #### Methods
 
+- `setListener(listener: AndroidSensorListener): void`
+  - Set the event listener which returns data when the sensors change.
 - `startSensor(sensor: android.hardware.Sensor, delay: SensorDelay): android.hardware.Sensor`
-  returns a reference to the sensor that was started, if the sensor was not started correctly, null is returned. You will use this sensor reference for the `stopSensor` method to unregister the listener.
+  - Registers the sensor with the provided reporting delay. Returns the instance of the sensor so it can be passed to the `stopSensor(sensor)` method to unregister when finished with it.
 - `stopSensor(sensor: android.hardware.Sensor): void`
+  - Unregisters the sensor.
