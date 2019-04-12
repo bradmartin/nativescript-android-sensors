@@ -25,6 +25,17 @@ export class AndroidSensors {
       this.XSensorClass.stopSensor(sensor);
     }
   }
+
+  getDeviceSensors(): android.hardware.Sensor[] {
+    const sensorList = this.XSensorClass.getDeviceSensors();
+    const result = [];
+    // iterate the sensor List and put the sensors into a plain array to return
+    for (let i = 0; i < sensorList.size(); i++) {
+      const sensor = sensorList.get(i) as android.hardware.Sensor;
+      result.push(sensor);
+    }
+    return result;
+  }
 }
 
 // simple alias for the XSensorListener interface

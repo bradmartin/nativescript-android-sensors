@@ -67,3 +67,5 @@ const sensors = new AndroidSensors();
   - Registers the sensor with the provided reporting delay. Returns the instance of the sensor so it can be passed to the `stopSensor(sensor)` method to unregister when finished with it.
 - `stopSensor(sensor: android.hardware.Sensor): void`
   - Unregisters the sensor.
+- `getDeviceSensors(): android.hardware.Sensor[]`
+  - Returns an array of the devices sensors.
