@@ -29,18 +29,27 @@ Android Sensors: https://developer.android.com/reference/android/hardware/Sensor
 import { AndroidSensors, AndroidSensorListener, SensorDelay } from 'nativescript-android-sensors';
 
 const sensors = new AndroidSensors();
-
-const sensorListener = new AndroidSensorListener();
-sensorListener.onSensorChanged(result) {
-    // result is being returned as a string currently
-    const parsedData = JSON.parse(result);
-    const rawSensorData = parsedData.data;
-    const sensor = parsedData.sensor;
-    const time = parsedData.time;
-}
-
 const accelerometerSensor: android.hardware.Sensor;
 const gyroScope: android.hardware.Sensor;
+
+const sensorListener = new AndroidSensorListener({
+    onAccuracyChanged: (
+        sensor: android.hardware.Sensor,
+        accuracy: number
+      ) => {
+        console.log('accuracy', accuracy);
+    },
+    onSensorChanged: (result: string) => {
+        // result is being returned as a string currently
+        const parsedData = JSON.parse(result);
+        const rawSensorData = parsedData.data;
+        const sensor = parsedData.sensor;
+        const time = parsedData.time;
+    }
+});
+
+this.sensors.setListener(sensorListener);
+
 
 someFunction() {
     accelerometerSensor = sensors.startSensor(android.hardware.Sensor.TYPE_LINEAR_ACCELERATION, SensorDelay.FASTEST);
