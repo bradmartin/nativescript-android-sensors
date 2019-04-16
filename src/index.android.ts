@@ -16,8 +16,20 @@ export class AndroidSensors {
     }
   }
 
-  startSensor(sensor: number, delay: number): android.hardware.Sensor {
-    return this.XSensorClass.startSensor(sensor, delay);
+  startSensor(
+    sensor: number,
+    delay: number,
+    maxReportLatency?: number
+  ): android.hardware.Sensor {
+    if (maxReportLatency) {
+      return this.XSensorClass.startSensorWithReportLatency(
+        sensor,
+        delay,
+        maxReportLatency
+      );
+    } else {
+      return this.XSensorClass.startSensor(sensor, delay);
+    }
   }
 
   stopSensor(sensor: android.hardware.Sensor) {

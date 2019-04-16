@@ -56,7 +56,8 @@ someFunction() {
 
     // here we are using the android const 4 which is for the TYPE_GYROSCOPE sensor
     // https://developer.android.com/reference/android/hardware/Sensor.html#TYPE_GYROSCOPE
-    const gyroScope =  sensors.startSensor(4, SensorDelay.NORMAL);
+    // we are passing the third argument to `startSensor` which is for maxReportLatency, if the sensor is able to support FIFO this will register the sensor with the reporting latency value, if not, the sensor registers on the background thread as normal
+    const gyroScope =  sensors.startSensor(4, SensorDelay.NORMAL, 4000000);
 
     // maybe you wanna use a timeout and stop it after 8 seconds
     setTimeout(() => {
@@ -87,8 +88,8 @@ const sensors = new AndroidSensors();
 
 - `setListener(listener: AndroidSensorListener): void`
   - Set the event listener which returns data when the sensors change.
-- `startSensor(sensor: android.hardware.Sensor, delay: SensorDelay): android.hardware.Sensor`
-  - Registers the sensor with the provided reporting delay. Returns the instance of the sensor so it can be passed to the `stopSensor(sensor)` method to unregister when finished with it.
+- `startSensor(sensor: android.hardware.Sensor, delay: SensorDelay, maxReportingDelay?: number): android.hardware.Sensor`
+  - Registers the sensor with the provided reporting delay. Returns the instance of the sensor so it can be passed to the `stopSensor(sensor)` method to unregister when finished with it. The third argument to `startSensor` is for maxReportLatency, if the sensor is able to support FIFO this will register the sensor with the reporting latency value, if not, the sensor registers on the background thread as normal
 - `stopSensor(sensor: android.hardware.Sensor): void`
   - Unregisters the sensor.
 - `getDeviceSensors(): android.hardware.Sensor[]`
