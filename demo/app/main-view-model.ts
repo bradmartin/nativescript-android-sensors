@@ -18,8 +18,9 @@ export class HelloWorldModel extends Observable {
       onSensorChanged: result => {
         console.log('SensorChangedEvent', result);
         // result is being returned as a string currently
-        // const parsedData = JSON.parse(result);
-        // const rawSensorData = parsedData.data;
+        const parsedData = JSON.parse(result);
+        const rawSensorData = parsedData.data;
+        this.set('sensorData', rawSensorData.x);
         // const sensor = parsedData.sensor;
         // const time = parsedData.time;
       },
@@ -29,16 +30,23 @@ export class HelloWorldModel extends Observable {
     });
 
     this.androidSensors.setListener(listener);
+  }
 
+  public startLinearAcceleration() {
     // starting the acceleration sensor
     const acceleration = this.androidSensors.startSensor(
       android.hardware.Sensor.TYPE_LINEAR_ACCELERATION,
-      SensorDelay.NORMAL
+      SensorDelay.NORMAL,
+      8000000
     );
+    // checking if it supports FIFO
+    const x = acceleration.getFifoMaxEventCount();
+    this.set('sensorMaxFifoEventCount', `Max Fifo Event Count: ${x}`);
 
-    // after 5 seconds we are stopping the acceleration sensor
+    // after 8 seconds we are stopping the acceleration sensor
     setTimeout(() => {
       this.androidSensors.stopSensor(acceleration);
-    }, 5000);
+      this.set('sensorData', 'Sensor has stopped!');
+    }, 20000);
   }
 }
