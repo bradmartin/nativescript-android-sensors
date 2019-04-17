@@ -74,6 +74,10 @@ functionToStopTheSensorData() {
 
 #### Constructor
 
+AndroidSensors (liteData: boolean = false)
+
+The boolean argument for `liteData` changes the JSON returned from the sensor event changes. This is helpful when you are storing large amounts of dataset by reducing the redundant data from the sensor changed event.
+
 ```typescript
 import {
   AndroidSensors,
@@ -81,7 +85,7 @@ import {
   SensorDelay
 } from 'nativescript-android-sensors';
 
-const sensors = new AndroidSensors();
+const sensors = new AndroidSensors(true);
 ```
 
 #### Methods
@@ -94,3 +98,5 @@ const sensors = new AndroidSensors();
   - Unregisters the sensor.
 - `getDeviceSensors(): android.hardware.Sensor[]`
   - Returns an array of the devices sensors.
+- `flush(): boolean`
+  - Will flush event data from the listener. Returns true if successful in flushing.

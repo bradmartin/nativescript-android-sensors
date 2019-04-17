@@ -4,9 +4,11 @@ declare const com: any; // bypass not having typings for xsensor lib
 
 export class AndroidSensors {
   private XSensorClass;
-  constructor() {
+
+  constructor(liteData: boolean = false) {
     this.XSensorClass = new com.github.bradmartin.xsensor.XSensors(
-      androidUtils.getApplicationContext()
+      androidUtils.getApplicationContext(),
+      liteData
     );
   }
 
@@ -47,6 +49,10 @@ export class AndroidSensors {
       result.push(sensor);
     }
     return result;
+  }
+
+  flush(): boolean {
+    return this.XSensorClass.flush();
   }
 }
 
