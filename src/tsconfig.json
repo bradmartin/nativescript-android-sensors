@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
+    "target": "es2017",
+    "module": "esnext",
+    "moduleResolution": "node",
     "declaration": true,
     "removeComments": true,
     "noLib": false,
@@ -18,7 +19,8 @@
     "noImplicitAny": false,
     "noImplicitReturns": true,
     "noImplicitUseStrict": false,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": "."
   },
   "exclude": ["node_modules"],
   "compileOnSave": false

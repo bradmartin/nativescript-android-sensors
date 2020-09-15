@@ -1,4 +1,4 @@
-import { ad as androidUtils } from 'tns-core-modules/utils/utils';
+import { Utils } from '@nativescript/core';
 
 declare const com: any; // bypass not having typings for xsensor lib
 
@@ -7,7 +7,7 @@ export class AndroidSensors {
 
   constructor(liteData: boolean = false) {
     this.XSensorClass = new com.github.bradmartin.xsensor.XSensors(
-      androidUtils.getApplicationContext(),
+      Utils.android.getApplicationContext(),
       liteData
     );
   }
@@ -64,5 +64,5 @@ export enum SensorDelay {
   'FASTEST' = android.hardware.SensorManager.SENSOR_DELAY_FASTEST,
   'GAME' = android.hardware.SensorManager.SENSOR_DELAY_GAME,
   'UI' = android.hardware.SensorManager.SENSOR_DELAY_UI,
-  'NORMAL' = android.hardware.SensorManager.SENSOR_DELAY_NORMAL
+  'NORMAL' = android.hardware.SensorManager.SENSOR_DELAY_NORMAL,
 }

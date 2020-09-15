@@ -1,8 +1,8 @@
-import { Observable } from 'tns-core-modules/data/observable';
+import { Observable } from '@nativescript/core';
 import {
-  AndroidSensors,
   AndroidSensorListener,
-  SensorDelay
+  AndroidSensors,
+  SensorDelay,
 } from 'nativescript-android-sensors';
 
 export class HelloWorldModel extends Observable {
@@ -15,7 +15,7 @@ export class HelloWorldModel extends Observable {
     this.androidSensors = new AndroidSensors();
 
     const listener = new AndroidSensorListener({
-      onSensorChanged: result => {
+      onSensorChanged: (result) => {
         console.log('SensorChangedEvent', result);
         // result is being returned as a string currently
         const parsedData = JSON.parse(result);
@@ -26,7 +26,7 @@ export class HelloWorldModel extends Observable {
       },
       onAccuracyChanged: (sensor, accuracy) => {
         console.log('Accuracy Changed', sensor, accuracy);
-      }
+      },
     });
 
     this.androidSensors.setListener(listener);
@@ -40,7 +40,7 @@ export class HelloWorldModel extends Observable {
       8000000
     );
     // checking if it supports FIFO
-    const x = acceleration.getFifoMaxEventCount();
+    const x = (acceleration as any).getFifoMaxEventCount();
     this.set('sensorMaxFifoEventCount', `Max Fifo Event Count: ${x}`);
 
     // after 8 seconds we are stopping the acceleration sensor
