@@ -7,18 +7,20 @@
  <a href="https://www.npmjs.com/package/nativescript-android-sensors">
         <img src="https://img.shields.io/npm/v/nativescript-android-sensors.svg" alt="npm">
     </a>
-     <a href="https://travis-ci.org/bradmartin/nativescript-android-sensors">
-        <img src="https://travis-ci.org/bradmartin/nativescript-android-sensors.svg?branch=master" alt="travis build">
-    </a>
-    <a href="https://github.com/bradmartin/nativescript-android-sensors/stargazers">
-        <img src="https://img.shields.io/github/stars/bradmartin/nativescript-android-sensors.svg" alt="stars">
-    </a>
 </p>
 
 ## Installation
 
+NativeScript 7+:
+
 ```
-tns plugin add nativescript-android-sensors
+ns plugin add nativescript-android-sensors
+```
+
+NativeScript version lower than 7:
+
+```bash
+tns plugin add nativescript-android-sensors@1.5.0
 ```
 
 Android Sensors: https://developer.android.com/reference/android/hardware/Sensor.html
@@ -82,7 +84,7 @@ The boolean argument for `liteData` changes the JSON returned from the sensor ev
 import {
   AndroidSensors,
   AndroidSensorListener,
-  SensorDelay
+  SensorDelay,
 } from 'nativescript-android-sensors';
 
 const sensors = new AndroidSensors(true);
