@@ -21,16 +21,30 @@ export class AndroidSensors {
   startSensor(
     sensor: number,
     delay: number,
-    maxReportLatency?: number
+    maxReportLatency?: number,
+    isWakeUpSensor?: boolean
   ): android.hardware.Sensor {
     if (maxReportLatency) {
-      return this.XSensorClass.startSensorWithReportLatency(
-        sensor,
-        delay,
-        maxReportLatency
-      );
+      if (isWakeUpSensor === undefined) {
+        return this.XSensorClass.startSensorWithReportLatency(
+          sensor,
+          delay,
+          maxReportLatency
+        );
+      } else {
+        return this.XSensorClass.startSensorWithReportLatency(
+          sensor,
+          delay,
+          maxReportLatency,
+          isWakeUpSensor
+        );
+      }
     } else {
-      return this.XSensorClass.startSensor(sensor, delay);
+      if (isWakeUpSensor === undefined) {
+        return this.XSensorClass.startSensor(sensor, delay);
+      } else {
+        return this.XSensorClass.startSensor(sensor, delay, isWakeUpSensor);
+      }
     }
   }
 
